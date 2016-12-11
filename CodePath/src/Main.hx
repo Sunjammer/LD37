@@ -86,7 +86,11 @@ DMA 10 ;Run DMA with data starting at #10
 end:
 BRK";*/
     sourceField.innerText =
-"SLI ;Sleep for IRQ1 (mouse click)
+"tick: SLP 1000
+ADD 1
+TRC A
+JMP tick
+end: BRK
 IRQ1: TRC #50 ;mouseX
   TRC #51 ;mouseY
   RTI ;Back to sleep

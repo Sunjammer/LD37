@@ -54,7 +54,7 @@ var Main = function() {
 		_gthis.buildAndRun();
 	};
 	var sourceField = window.document.getElementById("input");
-	sourceField.innerHTML = sourceField.innerText = "SLI ;Sleep for IRQ1 (mouse click)\nIRQ1: TRC #50 ;mouseX\n  TRC #51 ;mouseY\n  RTI ;Back to sleep\n";
+	sourceField.innerHTML = sourceField.innerText = "tick: SLP 1000\nADD 1\nTRC A\nJMP tick\nend: BRK\nIRQ1: TRC #50 ;mouseX\n  TRC #51 ;mouseY\n  RTI ;Back to sleep\n";
 	this.log = [];
 	outputField.innerHTML = "";
 	haxe_Log.trace = function(d,pos) {
@@ -102,7 +102,7 @@ Main.prototype = {
 					if(m.isRunning()) {
 						m.next();
 						if(!m.isRunning()) {
-							haxe_Log.trace(m.name + " is complete",{ fileName : "Main.hx", lineNumber : 130, className : "Main", methodName : "update"});
+							haxe_Log.trace(m.name + " is complete",{ fileName : "Main.hx", lineNumber : 134, className : "Main", methodName : "update"});
 						}
 					}
 				}
@@ -117,7 +117,7 @@ Main.prototype = {
 					return;
 				}
 			}
-			haxe_Log.trace("All machines done",{ fileName : "Main.hx", lineNumber : 142, className : "Main", methodName : "update"});
+			haxe_Log.trace("All machines done",{ fileName : "Main.hx", lineNumber : 146, className : "Main", methodName : "update"});
 		} catch( e ) {
 			if (e instanceof js__$Boot_HaxeError) e = e.val;
 			js_Browser.alert(Std.string(e) + "");
@@ -586,7 +586,17 @@ vm_Assembler.assemble = function(source) {
 				var k = Std.parseInt(line.substring(3));
 				interrupts.h[k] = count;
 			} else {
-				var k1 = HxOverrides.substr(line,0,line.length - 1);
+				var out1 = "";
+				var _g12 = 0;
+				var _g3 = line.length;
+				while(_g12 < _g3) {
+					var char1 = line.charAt(_g12++);
+					if(char1 == ":") {
+						break;
+					}
+					out1 += char1;
+				}
+				var k1 = out1;
 				var v = count + "";
 				if(__map_reserved[k1] != null) {
 					labels.setReserved(k1,v);
@@ -611,10 +621,10 @@ vm_Assembler.assemble = function(source) {
 		++count;
 		lines.push(line);
 	}
-	var _g12 = 0;
-	var _g3 = lines.length;
-	while(_g12 < _g3) {
-		var i = _g12++;
+	var _g13 = 0;
+	var _g4 = lines.length;
+	while(_g13 < _g4) {
+		var i = _g13++;
 		var line1 = lines[i];
 		var label = labels.keys();
 		while(label.hasNext()) {
@@ -632,14 +642,14 @@ vm_Assembler.assemble = function(source) {
 		}
 	}
 	var length = lines.length;
-	var out1 = { instructions : new Array(length), interrupts : interrupts};
-	var _g13 = 0;
-	var _g4 = lines.length;
-	while(_g13 < _g4) {
-		var i1 = _g13++;
-		out1.instructions[i1] = vm_Assembler.parseLine(lines[i1],i1);
+	var out2 = { instructions : new Array(length), interrupts : interrupts};
+	var _g14 = 0;
+	var _g5 = lines.length;
+	while(_g14 < _g5) {
+		var i1 = _g14++;
+		out2.instructions[i1] = vm_Assembler.parseLine(lines[i1],i1);
 	}
-	return out1;
+	return out2;
 };
 vm_Assembler.parseLine = function(line,lineNo) {
 	var tokens = line.split(" ");

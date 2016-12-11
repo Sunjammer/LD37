@@ -25,7 +25,7 @@ class Assembler {
         if (line.indexOf("IRQ") > -1) {
           interrupts[Std.parseInt(line.substring(3))] = count;
         } else {
-          labels[line.substr(0, line.length - 1)] = count+"";
+          labels[line.readUntil(":")] = count+"";
         }
         line = line.readFrom(":").trim();
       }
