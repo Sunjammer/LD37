@@ -1989,7 +1989,6 @@ vm_Machine.prototype = {
 		if(this.program.interrupts.h.hasOwnProperty(irq)) {
 			this.workLoad = 0;
 			this.pushStack(this.RAM[3]);
-			haxe_Log.trace("PC: " + this.RAM[3],{ fileName : "Machine.hx", lineNumber : 279, className : "vm.Machine", methodName : "interrupt"});
 			this.RAM[3] = this.program.interrupts.h[irq];
 		}
 	}
@@ -1998,10 +1997,10 @@ vm_Machine.prototype = {
 		this.reset();
 		try {
 			while(this.isRunning()) this.next();
-			haxe_Log.trace("Program completed",{ fileName : "Machine.hx", lineNumber : 289, className : "vm.Machine", methodName : "run"});
+			haxe_Log.trace("Program completed",{ fileName : "Machine.hx", lineNumber : 288, className : "vm.Machine", methodName : "run"});
 		} catch( e ) {
 			if (e instanceof js__$Boot_HaxeError) e = e.val;
-			haxe_Log.trace("Program crashed at " + this.RAM[3] + ": " + Std.string(e),{ fileName : "Machine.hx", lineNumber : 291, className : "vm.Machine", methodName : "run"});
+			haxe_Log.trace("Program crashed at " + this.RAM[3] + ": " + Std.string(e),{ fileName : "Machine.hx", lineNumber : 290, className : "vm.Machine", methodName : "run"});
 		}
 	}
 	,__class__: vm_Machine
