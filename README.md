@@ -65,10 +65,10 @@ XOR(v:Value); //^ v with A and put the result in A
 LSH(v:Value); //Leftshift A by v and put the result in A
 RSH(v:Value); //Rightshift A by v and put the result in A
 
-BNE(a:Value, b:Value, pos:Value); //Branch to pos if a != b
-BEQ(a:Value, b:Value, pos:Value); //Branch to pos if a == b
-BLT(a:Value, b:Value, pos:Value); //Branch to pos if a < b
-BGT(a:Value, b:Value, pos:Value); //Branch to pos if a > b
+BNE(b:Value, pos:Value); //Branch to pos if A != b
+BEQ(b:Value, pos:Value); //Branch to pos if A == b
+BLT(b:Value, pos:Value); //Branch to pos if A < b
+BGT(b:Value, pos:Value); //Branch to pos if A > b
 
 SLI; //Sleep until interrupt
 SLP(v:Value); //Sleep for N cycles
