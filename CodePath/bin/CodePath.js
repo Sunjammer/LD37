@@ -701,57 +701,56 @@ vm_Assembler.toValue = function(str) {
 		}
 	}
 };
-var vm_Instruction = { __ename__ : true, __constructs__ : ["LDA","LDX","LDY","STA","STX","STY","WRM","PHA","PLA","TAX","TXA","TAY","TYA","TXY","TYX","SUB","ADD","SLI","SLP","BNE","BEQ","BLT","BGT","JMP","JSR","RTS","RTI","DMA","AND","IOR","XOR","LSH","RSH","BRK","NOP","OUT","MEM"] };
+var vm_Instruction = { __ename__ : true, __constructs__ : ["LDA","LDX","LDY","STA","STX","STY","PHA","PLA","TAX","TXA","TAY","TYA","TXY","TYX","SUB","ADD","SLI","SLP","BNE","BEQ","BLT","BGT","JMP","JSR","RTS","RTI","DMA","AND","IOR","XOR","LSH","RSH","BRK","NOP","OUT","MEM"] };
 vm_Instruction.LDA = function(v) { var $x = ["LDA",0,v]; $x.__enum__ = vm_Instruction; return $x; };
 vm_Instruction.LDX = function(v) { var $x = ["LDX",1,v]; $x.__enum__ = vm_Instruction; return $x; };
 vm_Instruction.LDY = function(v) { var $x = ["LDY",2,v]; $x.__enum__ = vm_Instruction; return $x; };
 vm_Instruction.STA = function(v) { var $x = ["STA",3,v]; $x.__enum__ = vm_Instruction; return $x; };
 vm_Instruction.STX = function(v) { var $x = ["STX",4,v]; $x.__enum__ = vm_Instruction; return $x; };
 vm_Instruction.STY = function(v) { var $x = ["STY",5,v]; $x.__enum__ = vm_Instruction; return $x; };
-vm_Instruction.WRM = function(pos) { var $x = ["WRM",6,pos]; $x.__enum__ = vm_Instruction; return $x; };
-vm_Instruction.PHA = ["PHA",7];
+vm_Instruction.PHA = ["PHA",6];
 vm_Instruction.PHA.__enum__ = vm_Instruction;
-vm_Instruction.PLA = ["PLA",8];
+vm_Instruction.PLA = ["PLA",7];
 vm_Instruction.PLA.__enum__ = vm_Instruction;
-vm_Instruction.TAX = ["TAX",9];
+vm_Instruction.TAX = ["TAX",8];
 vm_Instruction.TAX.__enum__ = vm_Instruction;
-vm_Instruction.TXA = ["TXA",10];
+vm_Instruction.TXA = ["TXA",9];
 vm_Instruction.TXA.__enum__ = vm_Instruction;
-vm_Instruction.TAY = ["TAY",11];
+vm_Instruction.TAY = ["TAY",10];
 vm_Instruction.TAY.__enum__ = vm_Instruction;
-vm_Instruction.TYA = ["TYA",12];
+vm_Instruction.TYA = ["TYA",11];
 vm_Instruction.TYA.__enum__ = vm_Instruction;
-vm_Instruction.TXY = ["TXY",13];
+vm_Instruction.TXY = ["TXY",12];
 vm_Instruction.TXY.__enum__ = vm_Instruction;
-vm_Instruction.TYX = ["TYX",14];
+vm_Instruction.TYX = ["TYX",13];
 vm_Instruction.TYX.__enum__ = vm_Instruction;
-vm_Instruction.SUB = function(v) { var $x = ["SUB",15,v]; $x.__enum__ = vm_Instruction; return $x; };
-vm_Instruction.ADD = function(v) { var $x = ["ADD",16,v]; $x.__enum__ = vm_Instruction; return $x; };
-vm_Instruction.SLI = ["SLI",17];
+vm_Instruction.SUB = function(v) { var $x = ["SUB",14,v]; $x.__enum__ = vm_Instruction; return $x; };
+vm_Instruction.ADD = function(v) { var $x = ["ADD",15,v]; $x.__enum__ = vm_Instruction; return $x; };
+vm_Instruction.SLI = ["SLI",16];
 vm_Instruction.SLI.__enum__ = vm_Instruction;
-vm_Instruction.SLP = function(v) { var $x = ["SLP",18,v]; $x.__enum__ = vm_Instruction; return $x; };
-vm_Instruction.BNE = function(a,b,pos) { var $x = ["BNE",19,a,b,pos]; $x.__enum__ = vm_Instruction; return $x; };
-vm_Instruction.BEQ = function(a,b,pos) { var $x = ["BEQ",20,a,b,pos]; $x.__enum__ = vm_Instruction; return $x; };
-vm_Instruction.BLT = function(a,b,pos) { var $x = ["BLT",21,a,b,pos]; $x.__enum__ = vm_Instruction; return $x; };
-vm_Instruction.BGT = function(a,b,pos) { var $x = ["BGT",22,a,b,pos]; $x.__enum__ = vm_Instruction; return $x; };
-vm_Instruction.JMP = function(v) { var $x = ["JMP",23,v]; $x.__enum__ = vm_Instruction; return $x; };
-vm_Instruction.JSR = function(v) { var $x = ["JSR",24,v]; $x.__enum__ = vm_Instruction; return $x; };
-vm_Instruction.RTS = ["RTS",25];
+vm_Instruction.SLP = function(v) { var $x = ["SLP",17,v]; $x.__enum__ = vm_Instruction; return $x; };
+vm_Instruction.BNE = function(a,b,pos) { var $x = ["BNE",18,a,b,pos]; $x.__enum__ = vm_Instruction; return $x; };
+vm_Instruction.BEQ = function(a,b,pos) { var $x = ["BEQ",19,a,b,pos]; $x.__enum__ = vm_Instruction; return $x; };
+vm_Instruction.BLT = function(a,b,pos) { var $x = ["BLT",20,a,b,pos]; $x.__enum__ = vm_Instruction; return $x; };
+vm_Instruction.BGT = function(a,b,pos) { var $x = ["BGT",21,a,b,pos]; $x.__enum__ = vm_Instruction; return $x; };
+vm_Instruction.JMP = function(v) { var $x = ["JMP",22,v]; $x.__enum__ = vm_Instruction; return $x; };
+vm_Instruction.JSR = function(v) { var $x = ["JSR",23,v]; $x.__enum__ = vm_Instruction; return $x; };
+vm_Instruction.RTS = ["RTS",24];
 vm_Instruction.RTS.__enum__ = vm_Instruction;
-vm_Instruction.RTI = ["RTI",26];
+vm_Instruction.RTI = ["RTI",25];
 vm_Instruction.RTI.__enum__ = vm_Instruction;
-vm_Instruction.DMA = function(v) { var $x = ["DMA",27,v]; $x.__enum__ = vm_Instruction; return $x; };
-vm_Instruction.AND = function(v) { var $x = ["AND",28,v]; $x.__enum__ = vm_Instruction; return $x; };
-vm_Instruction.IOR = function(v) { var $x = ["IOR",29,v]; $x.__enum__ = vm_Instruction; return $x; };
-vm_Instruction.XOR = function(v) { var $x = ["XOR",30,v]; $x.__enum__ = vm_Instruction; return $x; };
-vm_Instruction.LSH = function(v) { var $x = ["LSH",31,v]; $x.__enum__ = vm_Instruction; return $x; };
-vm_Instruction.RSH = function(v) { var $x = ["RSH",32,v]; $x.__enum__ = vm_Instruction; return $x; };
-vm_Instruction.BRK = ["BRK",33];
+vm_Instruction.DMA = function(v) { var $x = ["DMA",26,v]; $x.__enum__ = vm_Instruction; return $x; };
+vm_Instruction.AND = function(v) { var $x = ["AND",27,v]; $x.__enum__ = vm_Instruction; return $x; };
+vm_Instruction.IOR = function(v) { var $x = ["IOR",28,v]; $x.__enum__ = vm_Instruction; return $x; };
+vm_Instruction.XOR = function(v) { var $x = ["XOR",29,v]; $x.__enum__ = vm_Instruction; return $x; };
+vm_Instruction.LSH = function(v) { var $x = ["LSH",30,v]; $x.__enum__ = vm_Instruction; return $x; };
+vm_Instruction.RSH = function(v) { var $x = ["RSH",31,v]; $x.__enum__ = vm_Instruction; return $x; };
+vm_Instruction.BRK = ["BRK",32];
 vm_Instruction.BRK.__enum__ = vm_Instruction;
-vm_Instruction.NOP = ["NOP",34];
+vm_Instruction.NOP = ["NOP",33];
 vm_Instruction.NOP.__enum__ = vm_Instruction;
-vm_Instruction.OUT = function(v) { var $x = ["OUT",35,v]; $x.__enum__ = vm_Instruction; return $x; };
-vm_Instruction.MEM = function(a,b) { var $x = ["MEM",36,a,b]; $x.__enum__ = vm_Instruction; return $x; };
+vm_Instruction.OUT = function(v) { var $x = ["OUT",34,v]; $x.__enum__ = vm_Instruction; return $x; };
+vm_Instruction.MEM = function(a,b) { var $x = ["MEM",35,a,b]; $x.__enum__ = vm_Instruction; return $x; };
 var vm_Machine = function(name) {
 	this.name = name;
 	this.RAM = new Array(128);
@@ -1069,63 +1068,31 @@ vm_Machine.prototype = {
 			this.RAM[p2] = this.RAM[2];
 			break;
 		case 6:
-			var pos = instruction[2];
-			this.workLoad += 1;
-			var p3;
-			switch(pos[1]) {
-			case 0:
-				p3 = pos[2];
-				break;
-			case 1:
-				var l6 = pos[2];
-				this.workLoad += 1;
-				if(pos[3]) {
-					p3 = this.RAM[l6];
-				} else {
-					p3 = this.MEMCTRL[1][l6];
-				}
-				break;
-			case 2:
-				p3 = this.RAM[3] + (pos[2] - 1);
-				break;
-			case 3:
-				p3 = this.RAM[0];
-				break;
-			case 4:
-				p3 = this.RAM[1];
-				break;
-			case 5:
-				p3 = this.RAM[2];
-				break;
-			}
-			this.RAM[p3] = this.RAM[0];
-			break;
-		case 7:
 			this.pushStack(this.RAM[0]);
 			break;
-		case 8:
+		case 7:
 			var v9 = this.popStack();
 			this.RAM[0] = v9;
 			break;
-		case 9:
+		case 8:
 			this.RAM[1] = this.RAM[0];
 			break;
-		case 10:
+		case 9:
 			this.RAM[0] = this.RAM[1];
 			break;
-		case 11:
+		case 10:
 			this.RAM[2] = this.RAM[0];
 			break;
-		case 12:
+		case 11:
 			this.RAM[0] = this.RAM[2];
 			break;
-		case 13:
+		case 12:
 			this.RAM[2] = this.RAM[1];
 			break;
-		case 14:
+		case 13:
 			this.RAM[1] = this.RAM[2];
 			break;
-		case 15:
+		case 14:
 			var v10 = instruction[2];
 			this.workLoad += 1;
 			var _g = this;
@@ -1136,12 +1103,12 @@ vm_Machine.prototype = {
 				v12 = v10[2];
 				break;
 			case 1:
-				var l7 = v10[2];
+				var l6 = v10[2];
 				this.workLoad += 1;
 				if(v10[3]) {
-					v12 = this.RAM[l7];
+					v12 = this.RAM[l6];
 				} else {
-					v12 = this.MEMCTRL[1][l7];
+					v12 = this.MEMCTRL[1][l6];
 				}
 				break;
 			case 2:
@@ -1159,7 +1126,7 @@ vm_Machine.prototype = {
 			}
 			_g.RAM[0] = v11 - v12;
 			break;
-		case 16:
+		case 15:
 			var v13 = instruction[2];
 			this.workLoad += 1;
 			var _g1 = this;
@@ -1170,12 +1137,12 @@ vm_Machine.prototype = {
 				v15 = v13[2];
 				break;
 			case 1:
-				var l8 = v13[2];
+				var l7 = v13[2];
 				this.workLoad += 1;
 				if(v13[3]) {
-					v15 = this.RAM[l8];
+					v15 = this.RAM[l7];
 				} else {
-					v15 = this.MEMCTRL[1][l8];
+					v15 = this.MEMCTRL[1][l7];
 				}
 				break;
 			case 2:
@@ -1193,11 +1160,11 @@ vm_Machine.prototype = {
 			}
 			_g1.RAM[0] = v14 + v15;
 			break;
-		case 17:
+		case 16:
 			this.RAM[3] -= 1;
 			this.workLoad = -1;
 			break;
-		case 18:
+		case 17:
 			var v16 = instruction[2];
 			var tmp = this;
 			var tmp1 = tmp.workLoad;
@@ -1207,12 +1174,12 @@ vm_Machine.prototype = {
 				tmp2 = v16[2];
 				break;
 			case 1:
-				var l9 = v16[2];
+				var l8 = v16[2];
 				this.workLoad += 1;
 				if(v16[3]) {
-					tmp2 = this.RAM[l9];
+					tmp2 = this.RAM[l8];
 				} else {
-					tmp2 = this.MEMCTRL[1][l9];
+					tmp2 = this.MEMCTRL[1][l8];
 				}
 				break;
 			case 2:
@@ -1230,8 +1197,8 @@ vm_Machine.prototype = {
 			}
 			tmp.workLoad = tmp1 + tmp2;
 			break;
-		case 19:
-			var pos1 = instruction[4];
+		case 18:
+			var pos = instruction[4];
 			var b = instruction[3];
 			var a = instruction[2];
 			this.workLoad += 3;
@@ -1241,12 +1208,12 @@ vm_Machine.prototype = {
 				tmp3 = a[2];
 				break;
 			case 1:
-				var l10 = a[2];
+				var l9 = a[2];
 				this.workLoad += 1;
 				if(a[3]) {
-					tmp3 = this.RAM[l10];
+					tmp3 = this.RAM[l9];
 				} else {
-					tmp3 = this.MEMCTRL[1][l10];
+					tmp3 = this.MEMCTRL[1][l9];
 				}
 				break;
 			case 2:
@@ -1268,12 +1235,12 @@ vm_Machine.prototype = {
 				tmp4 = b[2];
 				break;
 			case 1:
-				var l11 = b[2];
+				var l10 = b[2];
 				this.workLoad += 1;
 				if(b[3]) {
-					tmp4 = this.RAM[l11];
+					tmp4 = this.RAM[l10];
 				} else {
-					tmp4 = this.MEMCTRL[1][l11];
+					tmp4 = this.MEMCTRL[1][l10];
 				}
 				break;
 			case 2:
@@ -1291,21 +1258,21 @@ vm_Machine.prototype = {
 			}
 			if(tmp3 != tmp4) {
 				var v17;
-				switch(pos1[1]) {
+				switch(pos[1]) {
 				case 0:
-					v17 = pos1[2];
+					v17 = pos[2];
 					break;
 				case 1:
-					var l12 = pos1[2];
+					var l11 = pos[2];
 					this.workLoad += 1;
-					if(pos1[3]) {
-						v17 = this.RAM[l12];
+					if(pos[3]) {
+						v17 = this.RAM[l11];
 					} else {
-						v17 = this.MEMCTRL[1][l12];
+						v17 = this.MEMCTRL[1][l11];
 					}
 					break;
 				case 2:
-					v17 = this.RAM[3] + (pos1[2] - 1);
+					v17 = this.RAM[3] + (pos[2] - 1);
 					break;
 				case 3:
 					v17 = this.RAM[0];
@@ -1320,8 +1287,8 @@ vm_Machine.prototype = {
 				this.RAM[3] = v17;
 			}
 			break;
-		case 20:
-			var pos2 = instruction[4];
+		case 19:
+			var pos1 = instruction[4];
 			var b1 = instruction[3];
 			var a1 = instruction[2];
 			this.workLoad += 3;
@@ -1331,12 +1298,12 @@ vm_Machine.prototype = {
 				tmp5 = a1[2];
 				break;
 			case 1:
-				var l13 = a1[2];
+				var l12 = a1[2];
 				this.workLoad += 1;
 				if(a1[3]) {
-					tmp5 = this.RAM[l13];
+					tmp5 = this.RAM[l12];
 				} else {
-					tmp5 = this.MEMCTRL[1][l13];
+					tmp5 = this.MEMCTRL[1][l12];
 				}
 				break;
 			case 2:
@@ -1358,12 +1325,12 @@ vm_Machine.prototype = {
 				tmp6 = b1[2];
 				break;
 			case 1:
-				var l14 = b1[2];
+				var l13 = b1[2];
 				this.workLoad += 1;
 				if(b1[3]) {
-					tmp6 = this.RAM[l14];
+					tmp6 = this.RAM[l13];
 				} else {
-					tmp6 = this.MEMCTRL[1][l14];
+					tmp6 = this.MEMCTRL[1][l13];
 				}
 				break;
 			case 2:
@@ -1381,21 +1348,21 @@ vm_Machine.prototype = {
 			}
 			if(tmp5 == tmp6) {
 				var v18;
-				switch(pos2[1]) {
+				switch(pos1[1]) {
 				case 0:
-					v18 = pos2[2];
+					v18 = pos1[2];
 					break;
 				case 1:
-					var l15 = pos2[2];
+					var l14 = pos1[2];
 					this.workLoad += 1;
-					if(pos2[3]) {
-						v18 = this.RAM[l15];
+					if(pos1[3]) {
+						v18 = this.RAM[l14];
 					} else {
-						v18 = this.MEMCTRL[1][l15];
+						v18 = this.MEMCTRL[1][l14];
 					}
 					break;
 				case 2:
-					v18 = this.RAM[3] + (pos2[2] - 1);
+					v18 = this.RAM[3] + (pos1[2] - 1);
 					break;
 				case 3:
 					v18 = this.RAM[0];
@@ -1410,8 +1377,8 @@ vm_Machine.prototype = {
 				this.RAM[3] = v18;
 			}
 			break;
-		case 21:
-			var pos3 = instruction[4];
+		case 20:
+			var pos2 = instruction[4];
 			var b2 = instruction[3];
 			var a2 = instruction[2];
 			this.workLoad += 3;
@@ -1421,12 +1388,12 @@ vm_Machine.prototype = {
 				tmp7 = a2[2];
 				break;
 			case 1:
-				var l16 = a2[2];
+				var l15 = a2[2];
 				this.workLoad += 1;
 				if(a2[3]) {
-					tmp7 = this.RAM[l16];
+					tmp7 = this.RAM[l15];
 				} else {
-					tmp7 = this.MEMCTRL[1][l16];
+					tmp7 = this.MEMCTRL[1][l15];
 				}
 				break;
 			case 2:
@@ -1448,12 +1415,12 @@ vm_Machine.prototype = {
 				tmp8 = b2[2];
 				break;
 			case 1:
-				var l17 = b2[2];
+				var l16 = b2[2];
 				this.workLoad += 1;
 				if(b2[3]) {
-					tmp8 = this.RAM[l17];
+					tmp8 = this.RAM[l16];
 				} else {
-					tmp8 = this.MEMCTRL[1][l17];
+					tmp8 = this.MEMCTRL[1][l16];
 				}
 				break;
 			case 2:
@@ -1471,21 +1438,21 @@ vm_Machine.prototype = {
 			}
 			if(tmp7 < tmp8) {
 				var v19;
-				switch(pos3[1]) {
+				switch(pos2[1]) {
 				case 0:
-					v19 = pos3[2];
+					v19 = pos2[2];
 					break;
 				case 1:
-					var l18 = pos3[2];
+					var l17 = pos2[2];
 					this.workLoad += 1;
-					if(pos3[3]) {
-						v19 = this.RAM[l18];
+					if(pos2[3]) {
+						v19 = this.RAM[l17];
 					} else {
-						v19 = this.MEMCTRL[1][l18];
+						v19 = this.MEMCTRL[1][l17];
 					}
 					break;
 				case 2:
-					v19 = this.RAM[3] + (pos3[2] - 1);
+					v19 = this.RAM[3] + (pos2[2] - 1);
 					break;
 				case 3:
 					v19 = this.RAM[0];
@@ -1500,8 +1467,8 @@ vm_Machine.prototype = {
 				this.RAM[3] = v19;
 			}
 			break;
-		case 22:
-			var pos4 = instruction[4];
+		case 21:
+			var pos3 = instruction[4];
 			var b3 = instruction[3];
 			var a3 = instruction[2];
 			this.workLoad += 3;
@@ -1511,12 +1478,12 @@ vm_Machine.prototype = {
 				tmp9 = a3[2];
 				break;
 			case 1:
-				var l19 = a3[2];
+				var l18 = a3[2];
 				this.workLoad += 1;
 				if(a3[3]) {
-					tmp9 = this.RAM[l19];
+					tmp9 = this.RAM[l18];
 				} else {
-					tmp9 = this.MEMCTRL[1][l19];
+					tmp9 = this.MEMCTRL[1][l18];
 				}
 				break;
 			case 2:
@@ -1538,12 +1505,12 @@ vm_Machine.prototype = {
 				tmp10 = b3[2];
 				break;
 			case 1:
-				var l20 = b3[2];
+				var l19 = b3[2];
 				this.workLoad += 1;
 				if(b3[3]) {
-					tmp10 = this.RAM[l20];
+					tmp10 = this.RAM[l19];
 				} else {
-					tmp10 = this.MEMCTRL[1][l20];
+					tmp10 = this.MEMCTRL[1][l19];
 				}
 				break;
 			case 2:
@@ -1561,21 +1528,21 @@ vm_Machine.prototype = {
 			}
 			if(tmp9 > tmp10) {
 				var v20;
-				switch(pos4[1]) {
+				switch(pos3[1]) {
 				case 0:
-					v20 = pos4[2];
+					v20 = pos3[2];
 					break;
 				case 1:
-					var l21 = pos4[2];
+					var l20 = pos3[2];
 					this.workLoad += 1;
-					if(pos4[3]) {
-						v20 = this.RAM[l21];
+					if(pos3[3]) {
+						v20 = this.RAM[l20];
 					} else {
-						v20 = this.MEMCTRL[1][l21];
+						v20 = this.MEMCTRL[1][l20];
 					}
 					break;
 				case 2:
-					v20 = this.RAM[3] + (pos4[2] - 1);
+					v20 = this.RAM[3] + (pos3[2] - 1);
 					break;
 				case 3:
 					v20 = this.RAM[0];
@@ -1590,7 +1557,7 @@ vm_Machine.prototype = {
 				this.RAM[3] = v20;
 			}
 			break;
-		case 23:
+		case 22:
 			var v21 = instruction[2];
 			this.workLoad += 1;
 			var v22;
@@ -1599,12 +1566,12 @@ vm_Machine.prototype = {
 				v22 = v21[2];
 				break;
 			case 1:
-				var l22 = v21[2];
+				var l21 = v21[2];
 				this.workLoad += 1;
 				if(v21[3]) {
-					v22 = this.RAM[l22];
+					v22 = this.RAM[l21];
 				} else {
-					v22 = this.MEMCTRL[1][l22];
+					v22 = this.MEMCTRL[1][l21];
 				}
 				break;
 			case 2:
@@ -1622,7 +1589,7 @@ vm_Machine.prototype = {
 			}
 			this.RAM[3] = v22;
 			break;
-		case 24:
+		case 23:
 			var v23 = instruction[2];
 			this.workLoad += 1;
 			this.pushStack(this.RAM[3]);
@@ -1632,12 +1599,12 @@ vm_Machine.prototype = {
 				v24 = v23[2];
 				break;
 			case 1:
-				var l23 = v23[2];
+				var l22 = v23[2];
 				this.workLoad += 1;
 				if(v23[3]) {
-					v24 = this.RAM[l23];
+					v24 = this.RAM[l22];
 				} else {
-					v24 = this.MEMCTRL[1][l23];
+					v24 = this.MEMCTRL[1][l22];
 				}
 				break;
 			case 2:
@@ -1655,16 +1622,16 @@ vm_Machine.prototype = {
 			}
 			this.RAM[3] = v24;
 			break;
-		case 25:
+		case 24:
 			var v25 = this.popStack();
 			this.RAM[3] = v25;
 			break;
-		case 26:
+		case 25:
 			this.workLoad = this.prevWorkLoad;
 			var v26 = this.popStack();
 			this.RAM[3] = v26;
 			break;
-		case 27:
+		case 26:
 			var v27 = instruction[2];
 			var tmp11;
 			switch(v27[1]) {
@@ -1672,12 +1639,12 @@ vm_Machine.prototype = {
 				tmp11 = v27[2];
 				break;
 			case 1:
-				var l24 = v27[2];
+				var l23 = v27[2];
 				this.workLoad += 1;
 				if(v27[3]) {
-					tmp11 = this.RAM[l24];
+					tmp11 = this.RAM[l23];
 				} else {
-					tmp11 = this.MEMCTRL[1][l24];
+					tmp11 = this.MEMCTRL[1][l23];
 				}
 				break;
 			case 2:
@@ -1695,7 +1662,7 @@ vm_Machine.prototype = {
 			}
 			this.runDMA(tmp11);
 			break;
-		case 28:
+		case 27:
 			var a4 = instruction[2];
 			this.workLoad += 1;
 			var v28 = this.RAM[0];
@@ -1705,12 +1672,12 @@ vm_Machine.prototype = {
 				v29 = a4[2];
 				break;
 			case 1:
-				var l25 = a4[2];
+				var l24 = a4[2];
 				this.workLoad += 1;
 				if(a4[3]) {
-					v29 = this.RAM[l25];
+					v29 = this.RAM[l24];
 				} else {
-					v29 = this.MEMCTRL[1][l25];
+					v29 = this.MEMCTRL[1][l24];
 				}
 				break;
 			case 2:
@@ -1728,7 +1695,7 @@ vm_Machine.prototype = {
 			}
 			this.RAM[0] = v28 & v29;
 			break;
-		case 29:
+		case 28:
 			var a5 = instruction[2];
 			this.workLoad += 1;
 			var v30 = this.RAM[0];
@@ -1738,12 +1705,12 @@ vm_Machine.prototype = {
 				v31 = a5[2];
 				break;
 			case 1:
-				var l26 = a5[2];
+				var l25 = a5[2];
 				this.workLoad += 1;
 				if(a5[3]) {
-					v31 = this.RAM[l26];
+					v31 = this.RAM[l25];
 				} else {
-					v31 = this.MEMCTRL[1][l26];
+					v31 = this.MEMCTRL[1][l25];
 				}
 				break;
 			case 2:
@@ -1761,7 +1728,7 @@ vm_Machine.prototype = {
 			}
 			this.RAM[0] = v30 | v31;
 			break;
-		case 30:
+		case 29:
 			var a6 = instruction[2];
 			this.workLoad += 1;
 			var v32 = this.RAM[0];
@@ -1771,12 +1738,12 @@ vm_Machine.prototype = {
 				v33 = a6[2];
 				break;
 			case 1:
-				var l27 = a6[2];
+				var l26 = a6[2];
 				this.workLoad += 1;
 				if(a6[3]) {
-					v33 = this.RAM[l27];
+					v33 = this.RAM[l26];
 				} else {
-					v33 = this.MEMCTRL[1][l27];
+					v33 = this.MEMCTRL[1][l26];
 				}
 				break;
 			case 2:
@@ -1794,7 +1761,7 @@ vm_Machine.prototype = {
 			}
 			this.RAM[0] = v32 ^ v33;
 			break;
-		case 31:
+		case 30:
 			var a7 = instruction[2];
 			this.workLoad += 1;
 			var v34 = this.RAM[0];
@@ -1804,12 +1771,12 @@ vm_Machine.prototype = {
 				v35 = a7[2];
 				break;
 			case 1:
-				var l28 = a7[2];
+				var l27 = a7[2];
 				this.workLoad += 1;
 				if(a7[3]) {
-					v35 = this.RAM[l28];
+					v35 = this.RAM[l27];
 				} else {
-					v35 = this.MEMCTRL[1][l28];
+					v35 = this.MEMCTRL[1][l27];
 				}
 				break;
 			case 2:
@@ -1827,7 +1794,7 @@ vm_Machine.prototype = {
 			}
 			this.RAM[0] = v34 << v35;
 			break;
-		case 32:
+		case 31:
 			var a8 = instruction[2];
 			this.workLoad += 1;
 			var v36 = this.RAM[0];
@@ -1837,12 +1804,12 @@ vm_Machine.prototype = {
 				v37 = a8[2];
 				break;
 			case 1:
-				var l29 = a8[2];
+				var l28 = a8[2];
 				this.workLoad += 1;
 				if(a8[3]) {
-					v37 = this.RAM[l29];
+					v37 = this.RAM[l28];
 				} else {
-					v37 = this.MEMCTRL[1][l29];
+					v37 = this.MEMCTRL[1][l28];
 				}
 				break;
 			case 2:
@@ -1860,13 +1827,13 @@ vm_Machine.prototype = {
 			}
 			this.RAM[0] = v36 >> v37;
 			break;
-		case 33:
+		case 32:
 			this.RAM[3] = -1;
 			break;
-		case 34:
+		case 33:
 			this.workLoad += 1;
 			break;
-		case 35:
+		case 34:
 			var v38 = instruction[2];
 			this.workLoad += 1;
 			var tmp12 = this.name + ":\t";
@@ -1878,12 +1845,12 @@ vm_Machine.prototype = {
 					tmp13 = v39[2];
 					break;
 				case 1:
-					var l30 = v39[2];
+					var l29 = v39[2];
 					this.workLoad += 1;
 					if(v39[3]) {
-						tmp13 = this.RAM[l30];
+						tmp13 = this.RAM[l29];
 					} else {
-						tmp13 = this.MEMCTRL[1][l30];
+						tmp13 = this.MEMCTRL[1][l29];
 					}
 					break;
 				case 2:
@@ -1902,9 +1869,9 @@ vm_Machine.prototype = {
 			} else {
 				tmp13 = v38;
 			}
-			haxe_Log.trace(tmp12 + tmp13,{ fileName : "Machine.hx", lineNumber : 194, className : "vm.Machine", methodName : "step"});
+			haxe_Log.trace(tmp12 + tmp13,{ fileName : "Machine.hx", lineNumber : 191, className : "vm.Machine", methodName : "step"});
 			break;
-		case 36:
+		case 35:
 			var b4 = instruction[3];
 			var a9 = instruction[2];
 			this.workLoad += 2;
@@ -1914,12 +1881,12 @@ vm_Machine.prototype = {
 				tmp14 = a9[2];
 				break;
 			case 1:
-				var l31 = a9[2];
+				var l30 = a9[2];
 				this.workLoad += 1;
 				if(a9[3]) {
-					tmp14 = this.RAM[l31];
+					tmp14 = this.RAM[l30];
 				} else {
-					tmp14 = this.MEMCTRL[1][l31];
+					tmp14 = this.MEMCTRL[1][l30];
 				}
 				break;
 			case 2:
@@ -1941,12 +1908,12 @@ vm_Machine.prototype = {
 				tmp15 = b4[2];
 				break;
 			case 1:
-				var l32 = b4[2];
+				var l31 = b4[2];
 				this.workLoad += 1;
 				if(b4[3]) {
-					tmp15 = this.RAM[l32];
+					tmp15 = this.RAM[l31];
 				} else {
-					tmp15 = this.MEMCTRL[1][l32];
+					tmp15 = this.MEMCTRL[1][l31];
 				}
 				break;
 			case 2:
@@ -2014,10 +1981,10 @@ vm_Machine.prototype = {
 		this.reset();
 		try {
 			while(this.isRunning()) this.next();
-			haxe_Log.trace("Program completed",{ fileName : "Machine.hx", lineNumber : 293, className : "vm.Machine", methodName : "run"});
+			haxe_Log.trace("Program completed",{ fileName : "Machine.hx", lineNumber : 290, className : "vm.Machine", methodName : "run"});
 		} catch( e ) {
 			if (e instanceof js__$Boot_HaxeError) e = e.val;
-			haxe_Log.trace("Program crashed at " + this.RAM[3] + ": " + Std.string(e),{ fileName : "Machine.hx", lineNumber : 295, className : "vm.Machine", methodName : "run"});
+			haxe_Log.trace("Program crashed at " + this.RAM[3] + ": " + Std.string(e),{ fileName : "Machine.hx", lineNumber : 292, className : "vm.Machine", methodName : "run"});
 		}
 	}
 	,__class__: vm_Machine

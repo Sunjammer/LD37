@@ -8,7 +8,6 @@ enum Instruction
 	STA(v:Value); //Store A at memory
 	STX(v:Value); //Store X at memory
 	STY(v:Value); //Store Y at memory
-  WRM(pos:Value); //Write A to memory at pos
 	PHA; //Push A on stack
 	PLA; //Pull A from stack
 	TAX; // Copy A to X

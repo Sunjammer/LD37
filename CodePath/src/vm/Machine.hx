@@ -177,9 +177,6 @@ class Machine {
       case SLI:
         pc--;
         workLoad = -1;
-      case WRM(pos):
-        workLoad += 1;
-        writeMem(getValue(pos), A);
       case SUB(v):
         workLoad += 1;
         A -= getValue(v);
