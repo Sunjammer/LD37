@@ -23,10 +23,10 @@ enum Instruction
   SLI; //Sleep until interrupt
   SLP(v:Value); //Sleep for N cycles
 	
-	BNE(a:Value, b:Value, pos:Value); //Branch to pos if a != b
-	BEQ(a:Value, b:Value, pos:Value); //Branch to pos if a == b
-	BLT(a:Value, b:Value, pos:Value); //Branch to pos if a < b
-	BGT(a:Value, b:Value, pos:Value); //Branch to pos if a > b
+	BNE(a:Value, pos:Value); //Branch to pos if a != b
+	BEQ(a:Value, pos:Value); //Branch to pos if a == b
+	BLT(a:Value, pos:Value); //Branch to pos if a < b
+	BGT(a:Value, pos:Value); //Branch to pos if a > b
 	
 	JMP(v:Value); //Set program counter for next instruction
 	JSR(v:Value); //Begin subroutine

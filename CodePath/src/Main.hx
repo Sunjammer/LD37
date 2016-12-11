@@ -91,8 +91,8 @@ BRK";*/
 tick: SLP 1000
 ADD 1
 OUT A
-JMP tick
-end: BRK
+BNE 10 tick
+BRK
 IRQ1: OUT #50 ;mouseX
   OUT #51 ;mouseY
   RTI ;Back to ticks

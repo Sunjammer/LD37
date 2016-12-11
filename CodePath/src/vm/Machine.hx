@@ -189,18 +189,18 @@ class Machine {
       case OUT(v):
         workLoad += 1;
         trace(name+":\t"+ (Std.is(v, Value) ? getValue(v) : v));
-      case BNE(a, b, pos):
+      case BNE(a, pos):
         workLoad += 3;
-        if (getValue(a) != getValue(b)) pc = getValue(pos);
-      case BEQ(a, b, pos):
+        if (A != getValue(a)) pc = getValue(pos);
+      case BEQ(a, pos):
         workLoad += 3;
-        if (getValue(a) == getValue(b)) pc = getValue(pos);
-      case BLT(a, b, pos):
+        if (A == getValue(a)) pc = getValue(pos);
+      case BLT(a, pos):
         workLoad += 3;
-        if (getValue(a) < getValue(b)) pc = getValue(pos);
-      case BGT(a, b, pos):
+        if (A < getValue(a)) pc = getValue(pos);
+      case BGT(a, pos):
         workLoad += 3;
-        if (getValue(a) > getValue(b)) pc = getValue(pos);
+        if (A > getValue(a)) pc = getValue(pos);
       case AND(a):
         workLoad += 1;
         A = A & getValue(a);
