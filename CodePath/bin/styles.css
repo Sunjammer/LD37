@@ -1,0 +1,24 @@
+.header {
+    font-size: x-large;
+    font-family: Roboto, sans-serif;
+}
+
+.code {
+    white-space: pre;
+    font-size: small;
+    font-family: Space Mono;
+    display: block;
+    color: white;
+    margin: 1px;
+    padding: 5px;
+    background: #111;
+}
+
+.source {
+    float: left;
+    width: 50%;
+}
+.output {
+    float: right;
+    width: 50%;
+}
