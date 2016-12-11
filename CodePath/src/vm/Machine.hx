@@ -189,7 +189,7 @@ class Machine {
       case JMP(v):
         workLoad += 1;
         pc = getValue(v);
-      case TRC(v):
+      case OUT(v):
         workLoad += 1;
         trace(name+":\t"+ (Std.is(v, Value) ? getValue(v) : v));
       case BNE(a, b, pos):

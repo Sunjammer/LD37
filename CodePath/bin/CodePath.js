@@ -54,7 +54,7 @@ var Main = function() {
 		_gthis.buildAndRun();
 	};
 	var sourceField = window.document.getElementById("input");
-	sourceField.innerHTML = sourceField.innerText = "tick: SLP 1000\nADD 1\nTRC A\nJMP tick\nend: BRK\nIRQ1: TRC #50 ;mouseX\n  TRC #51 ;mouseY\n  RTI ;Back to sleep\n";
+	sourceField.innerHTML = sourceField.innerText = ";Tick every second, capture mouse clicks\ntick: SLP 1000\nADD 1\nOUT A\nJMP tick\nend: BRK\nIRQ1: OUT #50 ;mouseX\n  OUT #51 ;mouseY\n  RTI ;Back to ticks\n";
 	this.log = [];
 	outputField.innerHTML = "";
 	haxe_Log.trace = function(d,pos) {
@@ -88,7 +88,8 @@ Main.prototype = {
 			js_Browser.alert(Std.string(e) + "");
 		}
 		this.machines = [a];
-		window.requestAnimationFrame($bind(this,this.update));
+		window.cancelAnimationFrame(this.frameRequest);
+		this.frameRequest = window.requestAnimationFrame($bind(this,this.update));
 	}
 	,update: function(time) {
 		try {
@@ -102,7 +103,7 @@ Main.prototype = {
 					if(m.isRunning()) {
 						m.next();
 						if(!m.isRunning()) {
-							haxe_Log.trace(m.name + " is complete",{ fileName : "Main.hx", lineNumber : 134, className : "Main", methodName : "update"});
+							haxe_Log.trace(m.name + " is complete",{ fileName : "Main.hx", lineNumber : 136, className : "Main", methodName : "update"});
 						}
 					}
 				}
@@ -113,11 +114,11 @@ Main.prototype = {
 				var m1 = _g11[_g2];
 				++_g2;
 				if(m1.isRunning()) {
-					window.requestAnimationFrame($bind(this,this.update));
+					this.frameRequest = window.requestAnimationFrame($bind(this,this.update));
 					return;
 				}
 			}
-			haxe_Log.trace("All machines done",{ fileName : "Main.hx", lineNumber : 146, className : "Main", methodName : "update"});
+			haxe_Log.trace("All machines done",{ fileName : "Main.hx", lineNumber : 148, className : "Main", methodName : "update"});
 		} catch( e ) {
 			if (e instanceof js__$Boot_HaxeError) e = e.val;
 			js_Browser.alert(Std.string(e) + "");
@@ -700,7 +701,7 @@ vm_Assembler.toValue = function(str) {
 		}
 	}
 };
-var vm_Instruction = { __ename__ : true, __constructs__ : ["LDA","LDX","LDY","STA","STX","STY","WRM","PHA","PLA","TAX","TXA","TAY","TYA","TXY","TYX","SUB","ADD","SLI","SLP","BNE","BEQ","BLT","BGT","JMP","JSR","RTS","RTI","DMA","AND","IOR","XOR","LSH","RSH","BRK","NOP","TRC","MEM"] };
+var vm_Instruction = { __ename__ : true, __constructs__ : ["LDA","LDX","LDY","STA","STX","STY","WRM","PHA","PLA","TAX","TXA","TAY","TYA","TXY","TYX","SUB","ADD","SLI","SLP","BNE","BEQ","BLT","BGT","JMP","JSR","RTS","RTI","DMA","AND","IOR","XOR","LSH","RSH","BRK","NOP","OUT","MEM"] };
 vm_Instruction.LDA = function(v) { var $x = ["LDA",0,v]; $x.__enum__ = vm_Instruction; return $x; };
 vm_Instruction.LDX = function(v) { var $x = ["LDX",1,v]; $x.__enum__ = vm_Instruction; return $x; };
 vm_Instruction.LDY = function(v) { var $x = ["LDY",2,v]; $x.__enum__ = vm_Instruction; return $x; };
@@ -749,7 +750,7 @@ vm_Instruction.BRK = ["BRK",33];
 vm_Instruction.BRK.__enum__ = vm_Instruction;
 vm_Instruction.NOP = ["NOP",34];
 vm_Instruction.NOP.__enum__ = vm_Instruction;
-vm_Instruction.TRC = function(v) { var $x = ["TRC",35,v]; $x.__enum__ = vm_Instruction; return $x; };
+vm_Instruction.OUT = function(v) { var $x = ["OUT",35,v]; $x.__enum__ = vm_Instruction; return $x; };
 vm_Instruction.MEM = function(a,b) { var $x = ["MEM",36,a,b]; $x.__enum__ = vm_Instruction; return $x; };
 var vm_Machine = function(name) {
 	this.name = name;

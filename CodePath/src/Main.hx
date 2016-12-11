@@ -11,6 +11,7 @@ import vm.Machine;
 class Main {
   var machines:Array<Machine>;
   var log:Array<String>;
+  var frameRequest:Int;
 
   /**
    * Microcontroller spec:
@@ -86,14 +87,15 @@ DMA 10 ;Run DMA with data starting at #10
 end:
 BRK";*/
     sourceField.innerText =
-"tick: SLP 1000
+";Tick every second, capture mouse clicks
+tick: SLP 1000
 ADD 1
-TRC A
+OUT A
 JMP tick
 end: BRK
-IRQ1: TRC #50 ;mouseX
-  TRC #51 ;mouseY
-  RTI ;Back to sleep
+IRQ1: OUT #50 ;mouseX
+  OUT #51 ;mouseY
+  RTI ;Back to ticks
 ";
     log = [];
     outputField.innerHTML = "";
@@ -119,8 +121,8 @@ IRQ1: TRC #50 ;mouseX
     }
 
     machines = [a];
-
-    Browser.window.requestAnimationFrame(update);
+    Browser.window.cancelAnimationFrame(frameRequest);
+    frameRequest = Browser.window.requestAnimationFrame(update);
   }
 
   function update(time:Float) {
@@ -139,7 +141,7 @@ IRQ1: TRC #50 ;mouseX
 
       for (m in machines) {
         if (m.isRunning()) {
-          Browser.window.requestAnimationFrame(update);
+          frameRequest = Browser.window.requestAnimationFrame(update);
           return;
         }
       }

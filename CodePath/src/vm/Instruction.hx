@@ -46,6 +46,6 @@ enum Instruction
 	NOP; //No operation
 	
 	/* Debug stuff */
-	TRC(v:Dynamic); //Print value
+	OUT(v:Dynamic); //Print value
 	MEM(a:Value, b:Value); //Print memory from A to B
 }
