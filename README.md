@@ -1,8 +1,15 @@
-# LD37
-Ludum Dare 37
+LD37: "One Room"
+# CodePath
+Brainstorm: FPS hacking/programming escape game. Navigate and climb a shaft of traps and puzzles to escape to freedom. You can walk, run, jump, and use your hacking tool on machines. The hacking tool gives you a page of assembly code to edit and a matrix of hex numbers to monitor RAM. It's critical to analyse the existing code to understand its functionality and problems, so that it can be edited to perform the task you need to progress. For instance a program might trigger an elevator to rise by setting a value in memory once an interrupt is raised, but the elevator needs to rise higher and only after a delay. Shared memory buses are common. Each machine has its own internal memory, but also a set of mapped external memory controllers, frequently just a few bytes long. For instance, perhaps every door on a floor share a memory block with each byte signifying a door's opened state, letting one door manipulate others etc.
 
+The hacking tool is really just a gun you shoot at a hackable machine to establish a tether and bringing up a coding UI.
 
+## Tech choices
+- Haxe to CPP for microcontroller stuff
+- Unreal4 for everything else
 
+## Progress:
+Simple microcontroller simulation with sleeping, interrupts and DMA: Check.
 
 ```Haxe
 /**
