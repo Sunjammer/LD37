@@ -831,7 +831,7 @@ vm_Machine.prototype = {
 		}
 	}
 	,reset: function() {
-		this.workLoad = 0;
+		this.workLoad = this.prevWorkLoad = 0;
 		var _g = 0;
 		while(_g < 128) this.RAM[_g++] = 0;
 	}
@@ -845,13 +845,13 @@ vm_Machine.prototype = {
 		if(a == null) {
 			a = 0;
 		}
-		haxe_Log.trace("Memory:",{ fileName : "Machine.hx", lineNumber : 116, className : "vm.Machine", methodName : "printMem"});
+		haxe_Log.trace("Memory:",{ fileName : "Machine.hx", lineNumber : 117, className : "vm.Machine", methodName : "printMem"});
 		var _g1 = a;
 		while(_g1 < b) {
 			var i = _g1++;
 			var str = "\t" + i + "\t";
 			str += hex?"0x" + StringTools.hex(this.RAM[i],2):this.RAM[i];
-			haxe_Log.trace(str,{ fileName : "Machine.hx", lineNumber : 120, className : "vm.Machine", methodName : "printMem"});
+			haxe_Log.trace(str,{ fileName : "Machine.hx", lineNumber : 121, className : "vm.Machine", methodName : "printMem"});
 		}
 	}
 	,pushStack: function(v) {
@@ -1654,28 +1654,33 @@ vm_Machine.prototype = {
 			}
 			this.RAM[3] = v24;
 			break;
-		case 25:case 26:
+		case 25:
 			var v25 = this.popStack();
 			this.RAM[3] = v25;
 			break;
+		case 26:
+			this.workLoad = this.prevWorkLoad;
+			var v26 = this.popStack();
+			this.RAM[3] = v26;
+			break;
 		case 27:
-			var v26 = instruction[2];
+			var v27 = instruction[2];
 			var tmp11;
-			switch(v26[1]) {
+			switch(v27[1]) {
 			case 0:
-				tmp11 = v26[2];
+				tmp11 = v27[2];
 				break;
 			case 1:
-				var l24 = v26[2];
+				var l24 = v27[2];
 				this.workLoad += 1;
-				if(v26[3]) {
+				if(v27[3]) {
 					tmp11 = this.RAM[l24];
 				} else {
 					tmp11 = this.MEMCTRL[1][l24];
 				}
 				break;
 			case 2:
-				tmp11 = this.RAM[3] + (v26[2] - 1);
+				tmp11 = this.RAM[3] + (v27[2] - 1);
 				break;
 			case 3:
 				tmp11 = this.RAM[0];
@@ -1692,167 +1697,167 @@ vm_Machine.prototype = {
 		case 28:
 			var a4 = instruction[2];
 			this.workLoad += 1;
-			var v27 = this.RAM[0];
-			var v28;
+			var v28 = this.RAM[0];
+			var v29;
 			switch(a4[1]) {
 			case 0:
-				v28 = a4[2];
+				v29 = a4[2];
 				break;
 			case 1:
 				var l25 = a4[2];
 				this.workLoad += 1;
 				if(a4[3]) {
-					v28 = this.RAM[l25];
+					v29 = this.RAM[l25];
 				} else {
-					v28 = this.MEMCTRL[1][l25];
+					v29 = this.MEMCTRL[1][l25];
 				}
 				break;
 			case 2:
-				v28 = this.RAM[3] + (a4[2] - 1);
+				v29 = this.RAM[3] + (a4[2] - 1);
 				break;
 			case 3:
-				v28 = this.RAM[0];
+				v29 = this.RAM[0];
 				break;
 			case 4:
-				v28 = this.RAM[1];
+				v29 = this.RAM[1];
 				break;
 			case 5:
-				v28 = this.RAM[2];
+				v29 = this.RAM[2];
 				break;
 			}
-			this.RAM[0] = v27 & v28;
+			this.RAM[0] = v28 & v29;
 			break;
 		case 29:
 			var a5 = instruction[2];
 			this.workLoad += 1;
-			var v29 = this.RAM[0];
-			var v30;
+			var v30 = this.RAM[0];
+			var v31;
 			switch(a5[1]) {
 			case 0:
-				v30 = a5[2];
+				v31 = a5[2];
 				break;
 			case 1:
 				var l26 = a5[2];
 				this.workLoad += 1;
 				if(a5[3]) {
-					v30 = this.RAM[l26];
+					v31 = this.RAM[l26];
 				} else {
-					v30 = this.MEMCTRL[1][l26];
+					v31 = this.MEMCTRL[1][l26];
 				}
 				break;
 			case 2:
-				v30 = this.RAM[3] + (a5[2] - 1);
+				v31 = this.RAM[3] + (a5[2] - 1);
 				break;
 			case 3:
-				v30 = this.RAM[0];
+				v31 = this.RAM[0];
 				break;
 			case 4:
-				v30 = this.RAM[1];
+				v31 = this.RAM[1];
 				break;
 			case 5:
-				v30 = this.RAM[2];
+				v31 = this.RAM[2];
 				break;
 			}
-			this.RAM[0] = v29 | v30;
+			this.RAM[0] = v30 | v31;
 			break;
 		case 30:
 			var a6 = instruction[2];
 			this.workLoad += 1;
-			var v31 = this.RAM[0];
-			var v32;
+			var v32 = this.RAM[0];
+			var v33;
 			switch(a6[1]) {
 			case 0:
-				v32 = a6[2];
+				v33 = a6[2];
 				break;
 			case 1:
 				var l27 = a6[2];
 				this.workLoad += 1;
 				if(a6[3]) {
-					v32 = this.RAM[l27];
+					v33 = this.RAM[l27];
 				} else {
-					v32 = this.MEMCTRL[1][l27];
+					v33 = this.MEMCTRL[1][l27];
 				}
 				break;
 			case 2:
-				v32 = this.RAM[3] + (a6[2] - 1);
+				v33 = this.RAM[3] + (a6[2] - 1);
 				break;
 			case 3:
-				v32 = this.RAM[0];
+				v33 = this.RAM[0];
 				break;
 			case 4:
-				v32 = this.RAM[1];
+				v33 = this.RAM[1];
 				break;
 			case 5:
-				v32 = this.RAM[2];
+				v33 = this.RAM[2];
 				break;
 			}
-			this.RAM[0] = v31 ^ v32;
+			this.RAM[0] = v32 ^ v33;
 			break;
 		case 31:
 			var a7 = instruction[2];
 			this.workLoad += 1;
-			var v33 = this.RAM[0];
-			var v34;
+			var v34 = this.RAM[0];
+			var v35;
 			switch(a7[1]) {
 			case 0:
-				v34 = a7[2];
+				v35 = a7[2];
 				break;
 			case 1:
 				var l28 = a7[2];
 				this.workLoad += 1;
 				if(a7[3]) {
-					v34 = this.RAM[l28];
+					v35 = this.RAM[l28];
 				} else {
-					v34 = this.MEMCTRL[1][l28];
+					v35 = this.MEMCTRL[1][l28];
 				}
 				break;
 			case 2:
-				v34 = this.RAM[3] + (a7[2] - 1);
+				v35 = this.RAM[3] + (a7[2] - 1);
 				break;
 			case 3:
-				v34 = this.RAM[0];
+				v35 = this.RAM[0];
 				break;
 			case 4:
-				v34 = this.RAM[1];
+				v35 = this.RAM[1];
 				break;
 			case 5:
-				v34 = this.RAM[2];
+				v35 = this.RAM[2];
 				break;
 			}
-			this.RAM[0] = v33 << v34;
+			this.RAM[0] = v34 << v35;
 			break;
 		case 32:
 			var a8 = instruction[2];
 			this.workLoad += 1;
-			var v35 = this.RAM[0];
-			var v36;
+			var v36 = this.RAM[0];
+			var v37;
 			switch(a8[1]) {
 			case 0:
-				v36 = a8[2];
+				v37 = a8[2];
 				break;
 			case 1:
 				var l29 = a8[2];
 				this.workLoad += 1;
 				if(a8[3]) {
-					v36 = this.RAM[l29];
+					v37 = this.RAM[l29];
 				} else {
-					v36 = this.MEMCTRL[1][l29];
+					v37 = this.MEMCTRL[1][l29];
 				}
 				break;
 			case 2:
-				v36 = this.RAM[3] + (a8[2] - 1);
+				v37 = this.RAM[3] + (a8[2] - 1);
 				break;
 			case 3:
-				v36 = this.RAM[0];
+				v37 = this.RAM[0];
 				break;
 			case 4:
-				v36 = this.RAM[1];
+				v37 = this.RAM[1];
 				break;
 			case 5:
-				v36 = this.RAM[2];
+				v37 = this.RAM[2];
 				break;
 			}
-			this.RAM[0] = v35 >> v36;
+			this.RAM[0] = v36 >> v37;
 			break;
 		case 33:
 			this.RAM[3] = -1;
@@ -1861,27 +1866,27 @@ vm_Machine.prototype = {
 			this.workLoad += 1;
 			break;
 		case 35:
-			var v37 = instruction[2];
+			var v38 = instruction[2];
 			this.workLoad += 1;
 			var tmp12 = this.name + ":\t";
 			var tmp13;
-			if(js_Boot.__instanceof(v37,vm_Value)) {
-				var v38 = v37;
-				switch(v38[1]) {
+			if(js_Boot.__instanceof(v38,vm_Value)) {
+				var v39 = v38;
+				switch(v39[1]) {
 				case 0:
-					tmp13 = v38[2];
+					tmp13 = v39[2];
 					break;
 				case 1:
-					var l30 = v38[2];
+					var l30 = v39[2];
 					this.workLoad += 1;
-					if(v38[3]) {
+					if(v39[3]) {
 						tmp13 = this.RAM[l30];
 					} else {
 						tmp13 = this.MEMCTRL[1][l30];
 					}
 					break;
 				case 2:
-					tmp13 = this.RAM[3] + (v38[2] - 1);
+					tmp13 = this.RAM[3] + (v39[2] - 1);
 					break;
 				case 3:
 					tmp13 = this.RAM[0];
@@ -1894,9 +1899,9 @@ vm_Machine.prototype = {
 					break;
 				}
 			} else {
-				tmp13 = v37;
+				tmp13 = v38;
 			}
-			haxe_Log.trace(tmp12 + tmp13,{ fileName : "Machine.hx", lineNumber : 193, className : "vm.Machine", methodName : "step"});
+			haxe_Log.trace(tmp12 + tmp13,{ fileName : "Machine.hx", lineNumber : 194, className : "vm.Machine", methodName : "step"});
 			break;
 		case 36:
 			var b4 = instruction[3];
@@ -1997,6 +2002,7 @@ vm_Machine.prototype = {
 			return;
 		}
 		if(this.program.interrupts.h.hasOwnProperty(irq)) {
+			this.prevWorkLoad = this.workLoad;
 			this.workLoad = 0;
 			this.pushStack(this.RAM[3]);
 			this.RAM[3] = this.program.interrupts.h[irq];
@@ -2007,10 +2013,10 @@ vm_Machine.prototype = {
 		this.reset();
 		try {
 			while(this.isRunning()) this.next();
-			haxe_Log.trace("Program completed",{ fileName : "Machine.hx", lineNumber : 288, className : "vm.Machine", methodName : "run"});
+			haxe_Log.trace("Program completed",{ fileName : "Machine.hx", lineNumber : 293, className : "vm.Machine", methodName : "run"});
 		} catch( e ) {
 			if (e instanceof js__$Boot_HaxeError) e = e.val;
-			haxe_Log.trace("Program crashed at " + this.RAM[3] + ": " + Std.string(e),{ fileName : "Machine.hx", lineNumber : 290, className : "vm.Machine", methodName : "run"});
+			haxe_Log.trace("Program crashed at " + this.RAM[3] + ": " + Std.string(e),{ fileName : "Machine.hx", lineNumber : 295, className : "vm.Machine", methodName : "run"});
 		}
 	}
 	,__class__: vm_Machine

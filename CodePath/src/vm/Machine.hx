@@ -22,6 +22,7 @@ class Machine {
   var pc(get, set):Int;
   var stack(get, set):Int;
   var workLoad:Int;
+  var prevWorkLoad:Int;
 
   inline function get_ROM(){
     return MEMCTRL[1];
@@ -107,7 +108,7 @@ class Machine {
   }
 
   public function reset() {
-    workLoad = 0;
+    workLoad = prevWorkLoad = 0;
     for (i in 0...MEMSIZE)
       RAM[i] = 0;
   }
@@ -226,7 +227,10 @@ class Machine {
         pushStack(A);
       case PLA:
         A = popStack();
-      case RTS|RTI:
+      case RTS:
+        pc = popStack();
+      case RTI:
+        workLoad = prevWorkLoad;
         pc = popStack();
       case BRK:
         pc = -1;
@@ -274,6 +278,7 @@ class Machine {
   public function interrupt(irq:Int) {
     if (!isRunning()) return;
     if (program.interrupts.exists(irq)) {
+      prevWorkLoad = workLoad;
       workLoad = 0;
       pushStack(pc);
       pc = program.interrupts[irq];
